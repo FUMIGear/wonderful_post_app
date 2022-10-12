@@ -31,5 +31,14 @@ module WonderfulPostApp
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    #以下を追記
+    config.generators do |g|
+      g.jbuilder false
+      g.javascripts false
+      g.stylesheets false
+      g.helper false
+      g.test_framework false
+    end
   end
 end
