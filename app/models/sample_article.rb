@@ -1,2 +1,2 @@
-class SampleArticle < ApplicationRecord
+class SampleArticle < ApplicationRecord #これがmodel名か？？
 end
