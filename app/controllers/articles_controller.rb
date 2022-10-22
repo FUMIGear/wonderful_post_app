@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
+  #rails g scaffoldで基本的なCRUD処理はできる。
 
   # GET /articles or /articles.json
   def index
@@ -25,21 +26,16 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to article_url(@article), notice: "Article was successfully created." }
         # format.json { render :show, status: :created, location: @article }
+        format.html { redirect_to article_url(@article), notice: "Article was successfully created." } #html形式に直す
+        # format.html { redirect_to @article, notice: "Article was successfully created." } #html形式に直す
+        # redirect_to @article, notice: "Article was successfully created." #模範
       else
-        format.html { render :new, status: :unprocessable_entity }
         # format.json { render json: @article.errors, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_entity } #HTML形式に直す
+        # render :new, status: :unprocessable_entity #模範
       end
     end
-    # def create
-    #   @article = Article.new(
-    #     title: params[:title],
-    #     content: params[:content]
-    #   )
-    #   @article.save!
-    #   render :show
-    # end
   end
 
   # PATCH/PUT /articles/1 or /articles/1.json
@@ -47,10 +43,10 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       if @article.update(article_params)
         format.html { redirect_to article_url(@article), notice: "Article was successfully updated." }
-        format.json { render :show, status: :ok, location: @article }
+        # format.json { render :show, status: :ok, location: @article }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
+        # format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end
   end
