@@ -43,14 +43,17 @@ class ArticlesController < ApplicationController
   end
 
   # PATCH/PUT /articles/1 or /articles/1.json
+
   def update
     respond_to do |format|
       if @article.update(article_params)
         format.html { redirect_to article_url(@article), notice: "Article was successfully updated." }
-        format.json { render :show, status: :ok, location: @article }
+        # format.json { render :show, status: :ok, location: @article } #jsonは使わない
+        # redirect_to @article, notice: "Article was successfully updated." #模範回答
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
+        # format.json { render json: @article.errors, status: :unprocessable_entity } #jsonは使わない
+        # render :edit, status: :unprocessable_entity #模範回答
       end
     end
   end
