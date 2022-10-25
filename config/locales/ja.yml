@@ -1,0 +1,15 @@
+ja:
+  # hello: "こんにちは！"
+
+# サイトの本文をそのまま追記
+#DBに関するrailsコード＝activerecord
+  activerecord:
+    attributes: #model名
+      article: #article/createを参考に単数系にしたら、うまくいった
+      # blog:
+        title: タイトル
+        content: 本文
+  helpers:
+    submit:
+      create: 登録する
+      update: 更新する

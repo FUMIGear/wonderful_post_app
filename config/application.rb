@@ -40,5 +40,12 @@ module WonderfulPostApp
       g.helper false
       g.test_framework false
     end
+    #タイムゾーンをTokyoにする
+    #https://zenn.dev/ryouzi/articles/dda18594f2dbd3を参考に
+    config.time_zone = 'Tokyo' #Rails自体のアプリケーションの時刻の設定
+    config.active_record.default_timezone = :local #DBを読み書きする際に、DBに記録されている時間をどのタイムゾーンで読み込むかの設定
+
+    #localeで日本語ファイルを読み込む→config/locale/ja.yml
+    config.i18n.default_locale = :jp
   end
 end

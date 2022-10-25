@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Articles</h1>
+<h1 style="color:blue;">ようこそ！Wonderful post appへ</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th colspan="3"></th>
+      <th>表題：</th> <!--title-->
+      <th>内容：</th><!--content-->
+      <th colspan="3"></th> <!--colspanは横方向に結合-->
     </tr>
   </thead>
 
@@ -16,9 +16,9 @@
       <tr>
         <td><%= article.title %></td>
         <td><%= article.content %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '表示', article %></td><!--show-->
+        <td><%= link_to '編集', edit_article_path(article) %></td><!--edit-->
+        <td><%= link_to '削除', article, method: :delete, data: { confirm: '本当にホントに消していいんか？' } %></td> <!--destroy,フラッシュメッセージを変更-->
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Article', new_article_path %>
+<%= link_to '新しい記事の作成', new_article_path %><!--New article-->
