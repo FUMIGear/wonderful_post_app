@@ -46,6 +46,6 @@ module WonderfulPostApp
     config.active_record.default_timezone = :local #DBを読み書きする際に、DBに記録されている時間をどのタイムゾーンで読み込むかの設定
 
     #localeで日本語ファイルを読み込む→config/locale/ja.yml
-    config.i18n.default_locale = :jp
+    config.i18n.default_locale = :ja
   end
 end
