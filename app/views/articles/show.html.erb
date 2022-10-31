@@ -1,14 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>タイトル:</strong>
-  <%= @article.title %>
-</p>
+<div class="card">
+  <div class="card-header">
+    <%= @article.title %>
+    <!--<strong>タイトル:</strong>-->
+  </div>
 
-<p>
-  <strong>本文:</strong>
-  <%= @article.content %>
-</p>
+  <div class="card-body">
+    <!--<strong>本文:</strong>-->
+    <%= @article.content %>
+  </div>
+</div>
 
-<%= link_to '編集', edit_article_path(@article) %> |
-<%= link_to '戻る', articles_path %>
+<%= link_to '編集', edit_article_path(@article), class: "btn btn-warning"%> |
+<%= link_to '戻る', articles_path, class: "btn btn-secondary" %>
