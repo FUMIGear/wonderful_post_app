@@ -6,6 +6,8 @@ ruby '2.7.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.7'
 gem 'rails-i18n', '~> 6.0' # 追加
+#Task10で追加。ログイン・ログアウト機能を追加するツール
+gem 'devise'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'

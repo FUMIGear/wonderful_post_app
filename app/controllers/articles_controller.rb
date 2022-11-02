@@ -1,6 +1,10 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
 
+  #Task10で追加したコード
+  before_action :authenticate_user!, user_signed_in?, current_user, user_session
+  before_action :authenticate_member!, member_signed_in?, current_member, member_session
+
   # GET /articles or /articles.json
   def index
     @articles = Article.all
