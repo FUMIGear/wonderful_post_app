@@ -10,6 +10,7 @@ gem 'rails-i18n', '~> 6.0' # 追加
 gem 'devise'
 
 # Use postgresql as the database for Active Record
+# Task5-1の①（railsアプリ作成時にすでに導入済み）
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'

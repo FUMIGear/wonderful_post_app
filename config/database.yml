@@ -27,6 +27,7 @@ default: &default
   password: root
   host: 127.0.0.1
 
+#開発環境
 development:
   <<: *default
   database: wonderful_post_app_development
@@ -61,6 +62,7 @@ development:
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
+#テスト環境
 test:
   <<: *default
   database: wonderful_post_app_test
@@ -84,6 +86,7 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+#本番環境
 production:
   <<: *default
   database: wonderful_post_app_production

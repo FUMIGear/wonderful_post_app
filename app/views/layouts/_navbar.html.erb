@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <div class="container-fluid">
+    <!------TOPへのリンク設置------->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+      <% if user_signed_in?%> <!--user_signed_inはdevicesメソッドでuserがログインしているか判断するメソッド-->
+      <!--サインイン状態なら-->
+        <li class="nav-item">
+          <!------認証の各ボタン設置------->
+          <%= link_to "ログアウト", destroy_model_session_path, method: :delete, class:"nav-link active" %>
+          <!--class:"nav-link active"はbootstrapで予め設定されたスタイル-->
+          <!--***_pathとrails routesで使えるメソッドが一致する。-->
+          <!--link_toはHTMLで表示される文字-->
+          <!--destroy_model_session_pathはサインアウト処理行う？-->
+        </li>
+      <% else %><!--サインイン状態以外なら-->
+        <li class="nav-item">
+          <!------認証の各ボタン設置------->
+          <%= link_to "サインアップ", new_model_registration_path, class: "nav-link active" %>
+        </li>
+        <li class="nav-item">
+          <!------認証の各ボタン設置------->
+          <%= link_to "サインイン", new_model_session_path, class: "nav-link active" %>
+        </li>
+      <% end %>
+    </ul>
+    </div>
+  </div>
+</nav>

@@ -4,15 +4,16 @@
     <title>WonderfulPostApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %> <!--Qiitaで追加したコード-->
+    <!--<%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %> #Qiitaで追加したコード-->
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <!--Task10で追加した-->
   </head>
 
   <body>
+    <!--<%= render partial: "layouts/navbar" %>
     <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <p class="alert"><%= alert %></p>-->
     <div class="container"> <!--bootstrap導入後-->
      <%= yield %>
     </div>

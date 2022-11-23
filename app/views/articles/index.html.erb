@@ -13,10 +13,10 @@
   </thead>
 
   <tbody>
-    <% @articles.each do |article| %>
+    <% @articles.each do |article| %><!--@articlesの中にあるデータをeach文で表示する-->
       <tr>
-        <td><%= article.title %></td>
-        <td><%= article.content %></td>
+        <td><%= article.title %></td><!--.titleはarticleのkeyを表示-->
+        <td><%= article.content %></td><!--.contentはcontentの記事を表示-->
         <td><%= link_to '表示', article, class: "btn btn-success"%></td><!--show-->
         <td><%= link_to '編集', edit_article_path(article), class: "btn btn-warning" %></td><!--edit-->
         <td><%= link_to '削除', article, class: "btn btn-danger", method: :delete, data: { confirm: '本当にホントに消していいんか？' } %></td> <!--destroy,フラッシュメッセージを変更-->

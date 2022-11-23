@@ -12,21 +12,6 @@
   <% end %>
 
 <!--サイトではこのへんから〜-->
-  <div class="field">
-    <!--form.label :タイトル/でサイトの見た目は日本語にできるが、シンボル（変数）を変更しているためエラーになる-->
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-  <!--ここまでで日本語に書き換える-->
   <!--下記はbootstrap後に追記したコード-->
   <div class="mb-3">
     <%= form.label :title, class: "form-label" %>

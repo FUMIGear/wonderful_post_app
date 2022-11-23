@@ -1,13 +1,31 @@
-ja:
+ja: #デフォルト
+  hello: ハロー＊ワールドー
+  #<%= t('hello') %>をview/index.htmlに入力して、言語設定を日本語にすると表示される。
+  #rails cでI18n.t('hello')でも表示されるか？
+
 # サイトの本文をそのまま追記
   activerecord: #DBに関するrailsコード＝activerecord
     models: #model名を書く
-      article: 記事 #これは？？
-    attributes: #ここまでデフォ
+      article: 記事 #modelのarticleを日本語化したら？
+    attributes: #ここまでデフォ。DBテーブルに対する処理
       article: #article/createを参考に単数系にしたら、うまくいった
+      # articleモデルに使われるカラム
         title: タイトル
         content: 本文
-  helpers:
-    submit:
-      create: 登録する
-      update: 更新する
+  # helpers: #helperを作った場合に適用されるから、今回はいらないのでは？
+  # #helperに適用されるもの？
+  #   submit: #helpersのsubmit（ヘルパー名？）
+  #     create: 登録する #submitヘルパーのcreateを日本語化
+  #     update: 更新する #同じくupdateの日本語化？
+
+  #書き方としては
+  # ja:
+    #localeを日本語化した時の共通設定を書く場合はここに書く。
+    #Hello: ハロー＊ワールドーがその一例
+    #それ以降は特定のシンボルに対して使うか
+    #特定のモデルに使われるシンボルに対して日本語化する設定を作る。
+    #複数のモデルを作った場合はこの区分けが重要になる。
+    #今回だとsample_articleにlocale設定しないし、設定しても英語のままでいてほしい。
+    #またモデルは違えど同名のシンボルを使った場合は共通の設定にするか別々の設定にするか選べた方が自由度も高い。
+    #テーブル内のカラム？
+    #恐らくモデル以外のヘルパー、テスター、ビューなどにも適用できそう。
