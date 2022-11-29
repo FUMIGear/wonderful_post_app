@@ -6,8 +6,9 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
-  #Task10で追加した。
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  #Task10で追加した。使わないらしい（メーラー）
+  #メーラーはメールを送信する機能
+  # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # Do not eager load code on boot.
   config.eager_load = false

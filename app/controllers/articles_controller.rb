@@ -6,9 +6,11 @@ class ArticlesController < ApplicationController
   # %iはシンボル形式に変換する。だからonly:[:show,:edit,:update,:destroy]と書いてもok
 
   #Task10で追加したコード
-  before_action :authenticate_user!
-  before_action :authenticate_member!
-
+  # before_action :authenticate_user! #これいる？ヘルパー使う場合に使うbeforeaction→必要やった→やっぱ必要なかった
+  # before_action :authenticate_member! #これいる？ヘルパー使う場合に使うbeforeactionな気がする→必要やった。なくてもいけた
+  #上がないとトップ画面でログイン画面が出てこない
+  #authenticate_memberがないとDBにユーザを登録できない。上のメソッドがない？
+  # でもなくても行けた。よくわからないwwww
 
   # GET /articles or /articles.json
   def index
