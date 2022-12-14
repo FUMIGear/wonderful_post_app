@@ -12,5 +12,8 @@
   </div>
 </div>
 
-<%= link_to '編集', edit_article_path(@article), class: "btn btn-warning"%> |
+    <% if  @article.user_id == current_user.id %>
+      <%= link_to '編集', edit_article_path(@article), class: "btn btn-warning"%> |
+    <% end %>
+
 <%= link_to '戻る', articles_path, class: "btn btn-secondary" %>

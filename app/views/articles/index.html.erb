@@ -18,8 +18,13 @@
         <td><%= article.title %></td><!--.titleはarticleのkeyを表示-->
         <td><%= article.content %></td><!--.contentはcontentの記事を表示-->
         <td><%= link_to '表示', article, class: "btn btn-success"%></td><!--show-->
-        <td><%= link_to '編集', edit_article_path(article), class: "btn btn-warning" %></td><!--edit-->
-        <td><%= link_to '削除', article, class: "btn btn-danger", method: :delete, data: { confirm: '本当にホントに消していいんか？' } %></td> <!--destroy,フラッシュメッセージを変更-->
+        <% if  article.user_id == current_user.id %>
+          <td><%= link_to '編集', edit_article_path(article), class: "btn btn-warning" %></td><!--edit-->
+          <td><%= link_to '削除', article, class: "btn btn-danger", method: :delete, data: { confirm: '本当にホントに消していいんか？' } %></td> <!--destroy,フラッシュメッセージを変更-->
+        <% else %>
+          <td></td><!--空のtdを入れる（レイアウト調整）-->
+          <td></td><!--空のtdを入れる（レイアウト調整）-->
+        <% end %>
       </tr>
     <% end %>
     <!--Qiitaでbootstrapの動作確認ように入れたコード。不要なら、消してもいいかもね-->
