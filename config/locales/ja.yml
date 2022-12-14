@@ -7,19 +7,30 @@ ja: #デフォルト
   activerecord: #DBに関するrailsコード＝activerecord
     models: #model名を書く
       article: 記事 #modelのarticleを日本語化したら？
+      user: ユーザー #使わないと思われる→使ったわー
+
     attributes: #ここまでデフォ。DBテーブルに対する処理
       article: #article/createを参考に単数系にしたら、うまくいった
       # articleモデルに使われるカラム
         title: タイトル
         content: 本文
-  activerecord: #DBに関するrailsコード＝activerecord
-    devise: #model名を書く
-      user: 記事 #modelのarticleを日本語化したら？
-    attributes: #ここまでデフォ。DBテーブルに対する処理
-      # user: #article/createを参考に単数系にしたら、うまくいった
-      # articleモデルに使われるカラム
-        label: タイトル
-        email: 本文
+      user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（再入力）
+        remember_me: アカウントを記憶する
+
+
+
+      # 意味なかったシリーズ
+      # f:
+      #   email: Gメール
+      #   label: Eメール
+      #   email_label: 絵メール
+      # resource:
+      #   label: Eメール
+      #   email_label: 絵メール
+
   # helpers: #helperを作った場合に適用されるから、今回はいらないのでは？
   # #helperに適用されるもの？
   #   submit: #helpersのsubmit（ヘルパー名？）

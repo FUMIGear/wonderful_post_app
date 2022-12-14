@@ -5,6 +5,8 @@ class ArticlesController < ApplicationController
   # onlyは処理を指定する。
   # %iはシンボル形式に変換する。だからonly:[:show,:edit,:update,:destroy]と書いてもok
 
+  before_action :authenticate_user! #現在のユーザ情報を入手するため必要か？
+
   #Task10で追加したコード
   # before_action :authenticate_user! #これいる？ヘルパー使う場合に使うbeforeaction→必要やった→やっぱ必要なかった
   # before_action :authenticate_member! #これいる？ヘルパー使う場合に使うbeforeactionな気がする→必要やった。なくてもいけた
@@ -34,9 +36,12 @@ class ArticlesController < ApplicationController
   # POST /articles or /articles.json
   def create
     @article = Article.new(article_params)
+    # binding.pry
+    @article.user_id = current_user.id
 
     respond_to do |format|
-      if @article.save
+      if @article.save #記事が保存できるか
+        # 真の場合の処理
         format.html { redirect_to article_url(@article), notice: "記事の作成に成功しました！" }
         # format.json { render :show, status: :created, location: @article }
       else
@@ -57,28 +62,37 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1 or /articles/1.json
 
   def update
-    respond_to do |format|
-      if @article.update(article_params)
-        format.html { redirect_to article_url(@article), notice: "記事を更新しました。" }
-        # format.json { render :show, status: :ok, location: @article } #jsonは使わない
-        # redirect_to @article, notice: "Article was successfully updated." #模範回答
-        # notice:"記事を更新しました"とサイト上に表示される機能
-        # fromat.html{}はhtml形式に変更する。（.htmlを.jsonにするとjson形式になる）
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        # format.json { render json: @article.errors, status: :unprocessable_entity } #jsonは使わない
-        # render :edit, status: :unprocessable_entity #模範回答
+    # binding.pry
+    if  @article.user_id == current_user.id
+      respond_to do |format|
+        if @article.update(article_params)
+          format.html { redirect_to article_url(@article), notice: "記事を更新しました。" }
+          # format.json { render :show, status: :ok, location: @article } #jsonは使わない
+          # redirect_to @article, notice: "Article was successfully updated." #模範回答
+          # notice:"記事を更新しました"とサイト上に表示される機能
+          # fromat.html{}はhtml形式に変更する。（.htmlを.jsonにするとjson形式になる）
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          # format.json { render json: @article.errors, status: :unprocessable_entity } #jsonは使わない
+          # render :edit, status: :unprocessable_entity #模範回答
+        end
       end
+    else
+      redirect_to article_url(@article), notice: "アカウントが違います！"
     end
   end
 
   # DELETE /articles/1 or /articles/1.json
   def destroy
-    @article.destroy #destroyメソッドを実行する
-    respond_to do |format|
-      # redirect_to articles_url, notice: "Article was successfully destroyed."
-      format.html { redirect_to articles_url, notice: "記事を削除しました。" } #articles_urlはarticle#indexを開く。多分format.htmlはなくてもいける。
-      # format.json { head :no_content } #jsonは使わないから
+    if  @article.user_id == current_user.id
+      @article.destroy #destroyメソッドを実行する
+      respond_to do |format|
+        # redirect_to articles_url, notice: "Article was successfully destroyed."
+        format.html { redirect_to articles_url, notice: "記事を削除しました。" } #articles_urlはarticle#indexを開く。多分format.htmlはなくてもいける。
+        # format.json { head :no_content } #jsonは使わないから
+      end
+    else
+      redirect_to articles_url, notice: "垢ちゃう"
     end
   end
 
@@ -87,7 +101,7 @@ class ArticlesController < ApplicationController
     def set_article
       @article = Article.find(params[:id])
       # before_actionの後ろにset_articleがあり、ここでその処理を行ってる。
-      # "Article.数値"でArticlesテーブルのレコードを引っ張れる。
+      # "Article.find(id)"でArticlesテーブルの指定したidのレコードを引っ張る
       # .findは検索メソッド
       # DBとデータをやり取りする際にparamsメソッドを使う？
       # findメソッドを使わないとエラーになるのかな？

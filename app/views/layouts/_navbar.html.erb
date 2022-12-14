@@ -16,6 +16,10 @@
             <!--link_toはHTMLで表示される文字-->
             <!--destroy_model_session_pathはサインアウト処理行う？-->
           </li>
+            <!--ログインしているユーザのアドレスを表示する-->
+            <!-- binding.pry #動作確認%>-->
+            <li class="nav-link active"><%=current_user.email%></li>
+            <!--<li>current_user.email, class:"nav-link active" #これはエラーになる%></li>-->
         <% else %><!--サインイン状態以外なら-->
           <li class="nav-item">
             <!------認証の各ボタン設置------->

@@ -1,9 +1,14 @@
 ja:
   devise:
     attributes:
-      field:
-        label: "Eメール"
-        email_label: "絵メール"
+    # ここに書いても意味がなさそう
+      models:
+      # ここに書いても意味がなかった。
+      # user:
+      #   label: タイトル
+      #   email: メールアドレス
+
+
 
     confirmations:
       confirmed: 'アカウントを登録しました。'
