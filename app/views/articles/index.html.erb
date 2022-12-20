@@ -2,9 +2,10 @@
 
 <h1 style="color:blue;">ようこそ！Wonderful post appへ</h1>
 
-<%= link_to '記事作成', new_article_path, class: "btn btn-info" %>
+<!--Task11-2で削除／動作確認後消してみる-->
+<%= link_to '記事作成', new_article_path, class: "btn btn-info" %><!--Task11-2記事作成ボタン消去-->
 
-<table class="table">
+<table class="table"><!--これも消すん？？-->
   <thead>
     <tr>
       <th scope="col">表題：</th> <!--title-->
@@ -13,18 +14,28 @@
   </thead>
 
   <tbody>
+  <!-- binding.pry%>-->
     <% @articles.each do |article| %><!--@articlesの中にあるデータをeach文で表示する-->
-      <tr>
-        <td><%= article.title %></td><!--.titleはarticleのkeyを表示-->
-        <td><%= article.content %></td><!--.contentはcontentの記事を表示-->
-        <td><%= link_to '表示', article, class: "btn btn-success"%></td><!--show-->
-        <% if  article.user_id == current_user.id %>
-          <td><%= link_to '編集', edit_article_path(article), class: "btn btn-warning" %></td><!--edit-->
-          <td><%= link_to '削除', article, class: "btn btn-danger", method: :delete, data: { confirm: '本当にホントに消していいんか？' } %></td> <!--destroy,フラッシュメッセージを変更-->
-        <% else %>
-          <td></td><!--空のtdを入れる（レイアウト調整）-->
-          <td></td><!--空のtdを入れる（レイアウト調整）-->
-        <% end %>
+      <td>
+        <%= article.title %>
+        <!-- article.tags.each do |tag| %>
+          <span class="badge rounded-pill bg-primary"><%= tag.name%></span>
+         end %>-->
+      </td>
+      <!--<td><%= article.title %></td>.titleはarticleのkeyを表示-->
+      <td><%= article.content %></td><!--.contentはcontentの記事を表示-->
+      <td>
+        <%= link_to '表示', article, class: "btn btn-success"%>
+      </td><!--show-->
+        <!--
+           if  article.user_id == current_user.id %>
+            <td><%= link_to '編集', edit_article_path(article), class: "btn btn-warning" %></td>edit
+            <td><%= link_to '削除', article, class: "btn btn-danger", method: :delete, data: { confirm: '本当にホントに消していいんか？' } %></td>destroy,フラッシュメッセージを変更
+           else %>
+            <td></td>空のtdを入れる（レイアウト調整）
+            <td></td>空のtdを入れる（レイアウト調整）
+           end %>
+        -->
       </tr>
     <% end %>
     <!--Qiitaでbootstrapの動作確認ように入れたコード。不要なら、消してもいいかもね-->
