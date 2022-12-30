@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   # devise_for :models #いらないかなー
 
   resources :articles #g scaffold --forceで作られた
-  resources :sample_articles
   resources :mypage #Task11-3で手動で追記した
   # resources :test_tags #RESTfulな動作にするには必要。
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
