@@ -97,7 +97,8 @@ class ArticlesController < ApplicationController
       @article.destroy #destroyメソッドを実行する
       respond_to do |format|
         # redirect_to articles_url, notice: "Article was successfully destroyed."
-        format.html { redirect_to articles_url, notice: "記事を削除しました。" } #articles_urlはarticle#indexを開く。多分format.htmlはなくてもいける。
+        # format.html { redirect_to articles_url, notice: "記事を削除しました。" } #articles_urlはarticle#indexを開く。多分format.htmlはなくてもいける。
+        format.html { redirect_to  mypage_index_url, notice: "記事を削除しました。" } #削除後にmypage_index戻るように設定
         # format.json { head :no_content } #jsonは使わないから
       end
     else

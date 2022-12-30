@@ -18,7 +18,8 @@
           </li>
             <!--ログインしているユーザのアドレスを表示する-->
             <!-- binding.pry #動作確認%>-->
-            <li class="nav-link active"><%=current_user.email%></li>
+            <!--<li class="nav-link active"><%=link_to current_user.email, mypage_index_path%></li>-->
+            <li class="nav-link active"><%=link_to current_user.email, mypage_path%></li>
             <!--<li>current_user.email, class:"nav-link active" #これはエラーになる%></li>-->
         <% else %><!--サインイン状態以外なら-->
           <li class="nav-item">

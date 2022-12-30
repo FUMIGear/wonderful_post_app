@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p><!--行間開けるstyle？-->
+<h1 style="color:red;">マイページビュー</h1>
+<!--記事作成ボタンを配置／記事作成したらuser_idも紐づく？-->
+<%= link_to '記事作成', new_article_path, class: "btn btn-info" %><!--Task11-2記事作成ボタン消去-->
+
+<!--article/index.htmlの中身を参考にコピペ-->
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">表題：</th>
+      <th scope="col">内容：</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% @articles.each do |user_article| %>
+   <!-- current_user.articles.each do |user_article| %>-->
+      <td><%= user_article.title %></td>
+      <td><%= user_article.content %></td>
+      <td><%= link_to '表示', user_article, class: "btn btn-success" %>
+      <td><%= link_to '編集', edit_article_path(user_article), class: "btn btn-warning" %>
+      <td><%= link_to '削除', user_article, class: "btn btn-danger", method: :delete, data: { confirm: '本当にホントに消していいんか？' } %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
