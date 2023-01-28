@@ -11,6 +11,9 @@ gem 'rails-i18n', '~> 6.0' # 追加
 gem 'devise'
 gem 'devise-i18n'
 
+# Task13で追加
+gem 'kaminari'
+
 # Use postgresql as the database for Active Record
 # Task5-1の①（railsアプリ作成時にすでに導入済み）
 gem 'pg', '>= 0.18', '< 2.0'
