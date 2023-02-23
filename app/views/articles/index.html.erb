@@ -1,11 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <h1 style="color:blue;">ようこそ！Wonderful post appへ</h1>
+<!--Task13で追加したページネイション機能-->
+<%= paginate @articles %>
+
+<!--Task14で追加した検索-->
+<%= render partial: 'search' %>
 
 <!--Task11-2で削除／動作確認後消してみる-->
 <%= link_to '記事作成', new_article_path, class: "btn btn-info" %><!--Task11-2記事作成ボタン消去-->
 
-<table class="table"><!--これも消すん？？-->
+<table class="table">
   <thead>
     <tr>
       <th scope="col">表題：</th> <!--title-->
@@ -16,29 +21,15 @@
   <tbody>
   <!-- binding.pry%>-->
     <% @articles.each do |article| %><!--@articlesの中にあるデータをeach文で表示する-->
-      <td>
-        <%= article.title %>
-        <!-- article.tags.each do |tag| %>
-          <span class="badge rounded-pill bg-primary"><%= tag.name%></span>
-         end %>-->
-      </td>
-      <!--<td><%= article.title %></td>.titleはarticleのkeyを表示-->
-      <td><%= article.content %></td><!--.contentはcontentの記事を表示-->
-      <td>
-        <%= link_to '表示', article, class: "btn btn-success"%>
-      </td><!--show-->
-        <!--
-           if  article.user_id == current_user.id %>
-            <td><%= link_to '編集', edit_article_path(article), class: "btn btn-warning" %></td>edit
-            <td><%= link_to '削除', article, class: "btn btn-danger", method: :delete, data: { confirm: '本当にホントに消していいんか？' } %></td>destroy,フラッシュメッセージを変更
-           else %>
-            <td></td>空のtdを入れる（レイアウト調整）
-            <td></td>空のtdを入れる（レイアウト調整）
-           end %>
-        -->
+      <tr>
+        <td><%= article.title %></td>
+        <td><!--.contentは記事(content)を表示するメソッド-->
+          <%= article.content %>
+        </td>
+        <td>
+          <%= link_to '表示', article, class: "btn btn-success"%>
+        </td>
       </tr>
     <% end %>
-    <!--Qiitaでbootstrapの動作確認ように入れたコード。不要なら、消してもいいかもね-->
-    <!--<%= link_to "最終確認用ボタン", "#", class: "btn btn-primary" %> -->
   </tbody>
 </table>

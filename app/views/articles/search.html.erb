@@ -1,0 +1,17 @@
+<!--結局これは不要だった。一回PLしてから削除する。-->
+<h1>テスト表示</h1>
+<tbody>
+  <% @article.each do |article| %><!--@articlesの中にあるデータをeach文で表示する-->
+    <tr>
+      <td>
+        <%= article.title %>
+      </td>
+      <td><!--.contentは記事(content)を表示するメソッド-->
+        <%= article.content %>
+      </td>
+      <td>
+        <%= link_to '表示', article, class: "btn btn-success"%>
+      </td>
+    </tr>
+  <% end %>
+</tbody>

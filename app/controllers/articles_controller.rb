@@ -1,18 +1,16 @@
 class ArticlesController < ApplicationController
-	skip_before_action :authenticate_user!, only: %i[ index show ]
+	skip_before_action :authenticate_user!, only: %i[index show]
   # before_action :set_article, only: %i[show edit update destroy ] #Task11-1まで
   before_action :set_article, only: %i[ edit update destroy ] #Task11-2で変更
 
   # before_actionは何かを実行する前に行う処理
   # 下記にset_articleメソッドがある
-  # onlyは処理を指定する。
+  # onlyは処理を指定する。（skipなら「次のシンボルは無視する」ということ）
   # %iはシンボル形式に変換する。だからonly:[:show,:edit,:update,:destroy]と書いてもok
-  # Task11-2:なぜbefore_actionからshowを消した？
-
-
+  # Task11-2:なぜbefore_actionからshowを消した？→記事を見るだけなら誰でもええやん
 
   #Task10で追加したコード
-  # before_action :authenticate_user! #これいる？ヘルパー使う場合に使うbeforeaction→必要やった→やっぱ必要なかった
+  # before_action :authenticate_user! #これいる？ヘルパー使う場合に使うbeforeaction→必要やった→やっぱ必要なかった→特定の条件下で必要やったw
   # before_action :authenticate_member! #これいる？ヘルパー使う場合に使うbeforeactionな気がする→必要やった。なくてもいけた
   #上がないとトップ画面でログイン画面が出てこない
   #authenticate_memberがないとDBにユーザを登録できない。上のメソッドがない？
@@ -21,8 +19,20 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
-    #Article：DBテーブル、.all：全部。つまり、Articleテーブルのデータを全て@articleに入れる。
+    # @articles = Article.all #Task12まで使っていた。
+    # @articles = Article.all.page(params[:page]) # Task13まで
+    # search = Article.where('title LIKE ?', "%#{title}%") #あいまい検索
+    # Task14で追加／タイトルのあいまい検索
+    article = Article.all #articlesに全記事を代入する
+    title = params[:title] #text_tagで取得したパラメータ
+    # binding.pry
+    article = artcile.where("title LIKE ?", "%#{title}%") if title.present? #if修飾子（Tの場合は処理 if 条件式）
+    @articles = article.all.page(params[:page]) #ページネイションで表示する。
+    # Article：DBテーブル、.all：全部。つまり、Articleテーブルのデータを全て@articleに入れる。
+    # @boards = Board.all.includes(:user).order(created_at: :desc).page(params[:page]) #参考サイトのコード
+    # 上記２行を合体してみた
+    # @articles = Article.all.includes(:user).order(created_at: :desc).page(params[:page])
+    # title=nilの場合、全部の記事を取得する。また検索ワードを入れなかったらprams[:title]はnilを返す
   end
 
   # GET /articles/1 or /articles/1.json
@@ -104,6 +114,25 @@ class ArticlesController < ApplicationController
     else
       redirect_to articles_url, notice: "垢ちゃう"
     end
+  end
+
+  # Task14で追加（検索フォームに関するメソッド／いらない）
+  def search
+    title = params[:title]
+    # binding.pry
+    # タイトルの完全一致で検索
+    # @article=Article.where(title:title)
+    # タイトルのあいまい検索
+    @article=Article.where('title LIKE ?', "%#{title}%")
+    # @article=Article.where('title LIKE ?', "%#{params[:title]}%")
+    # 検索結果で見つからなかった場合の処理。
+    # if Article.where(title:title).empty?
+    #   puts "真"
+    #   # @article = Article.all.page(params[:page])
+    # else
+    #   puts "偽"
+    #   @article = Article.where(title:title)
+    # end
   end
 
   private

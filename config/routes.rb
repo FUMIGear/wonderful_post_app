@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   #URLの変更
-  get '/mypage', to: 'mypage#index'
-    #Task11-3で追加。URLの末尾＝mypage#showだよ。今回はindex.htmlで作ったので模範と少し違う
+  # get '/mypage', to: 'mypage#index' # 間違ってた
+  get '/mypage', to: 'mypage#show'
+  # Task11-3で追加。URLの末尾＝mypage#showだよ。今回はindex.htmlで作ったので模範と少し違う
   # get "/", to: 'articles#index', as: :articles #これだとうまくDBが構築できない
   # post "/" => 'article#create'
   root to: 'articles#index'
@@ -11,6 +12,8 @@ Rails.application.routes.draw do
 
   devise_for :users
   # devise_for :models #いらないかなー
+  # get '/articles', to: 'articles#search' as: 'search' #Task14/勘違い
+
 
   resources :articles #g scaffold --forceで作られた
   resources :mypage #Task11-3で手動で追記した

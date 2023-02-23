@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p><!--行間開けるstyle？-->
+
 <h1 style="color:red;">マイページビュー</h1>
+<%= render partial: "search" %><!--Task14で追加-->
+<%= paginate @articles %> <!--Task13で追加-->
+
 <!--記事作成ボタンを配置／記事作成したらuser_idも紐づく？-->
 <%= link_to '記事作成', new_article_path, class: "btn btn-info" %><!--Task11-2記事作成ボタン消去-->
 
@@ -13,7 +17,7 @@
   </thead>
   <tbody>
    <% @articles.each do |user_article| %>
-   <!-- current_user.articles.each do |user_article| %>-->
+   <!--current_user.articles.each do |user_article| %>-->
       <td><%= user_article.title %></td>
       <td><%= user_article.content %></td>
       <td><%= link_to '表示', user_article, class: "btn btn-success" %>
