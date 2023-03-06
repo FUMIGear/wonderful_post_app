@@ -8,4 +8,9 @@ class Article < ApplicationRecord
   # def user
   #   return User.find_by(id: self.user_id)
   # end
+
+  # Task15で追加（タグと記事の関係）
+  has_many :tag, through: :article_tag #article_tag(中間)を通して、tagと紐付け
+	has_many :article_tag, dependent: :destroy #article_tagとの関係も記述する
+
 end
