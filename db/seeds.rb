@@ -28,7 +28,18 @@
 #   end
 # end
 
+# タグの設定（重複しないようになってる！）
+Tag.find_or_create_by(name:"楽しい")
+Tag.find_or_create_by(name:"お金")
+Tag.find_or_create_by(name:"つぶやき")
+Tag.find_or_create_by(name:"屋外")
+Tag.find_or_create_by(name:"旅行")
+Tag.find_or_create_by(name:"シックスパック")
+Tag.find_or_create_by(name:"お弁当")
+ti=0
+
 # 模範回答
+# アカウント数３つ
 3.times do |i|
   i += 1 #通常[0..2]のところを[1..3]にする
   # .find_or_create_by!: 条件を指定して初めの1件を取得し1件もなければ作成
@@ -42,15 +53,50 @@
   # find_or_created_byで指定したカラムに特定のレコードがあるかないか判断する。
   # ない→そのデータでレコードを作り、付随するカラムを追記する。
 
-  6.times do |ii| #本来のループ回数は50（50記事）
+  #１つのアカウントに作成する記事は６つ
+  8.times do |ii| #本来のループ回数は50（50記事）
     ii += 1
     user.articles.find_or_create_by!(title: "No.#{ii}: user00#{i}の記事") do |article|
       # binding.pry
       article.content = "No.#{ii}: user00#{i}の記事の本文"
+
+      #Task15-2：seedファイルの編集
+      # tag = article.tag_ids.push(t)
+      # article.tag_ids=ii
+      # article.tags.find(i) #→失敗
+      # article.tags = "楽しい" #→失敗
     end
+
+    # １つの記事に付くタグは４つ
+    ti += 1 #記事数をカウント
+    # binding.pry
+    4.times do |t|
+      t +=1
+      #成功。このメソッドは複数のレコードも参照できる
+      ArticleTag.find_or_create_by(article_id:ti, tag_id:t)
+
+      # 最初に作ったやつ（seedを読み込むと重複する）
+      # ArticleTag.create(
+      #   # binding.pry
+      #   article_id:ti
+      #   tag_id:t
+      # )
+
+      # 失敗作（article_id:tiは4timesが終わらないとカウントが変わらないため、最初のタグが付くだけになる）
+      # ArticleTag.find_or_create_by(article_id:ti) do |at|
+      #   # binding.pry
+      #   at.tag_id=t
+      # end
+    end
+      # article.tag_ids = tag
   end
 end
+# タグつける処理。
+# 6.times do |a|
+#   a += 1
+# end
 # |artile|はuser.articlesになる。
+
 # title:があれば→作らない。なければ→作って、contentはNo.*****にするという処理
 # user.articlesの記事の中に特定のレコードがあるかないか判断する。
 # 参照したデータがない→そのレコードを作成し、付随するデータを追記する。

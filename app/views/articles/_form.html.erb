@@ -2,7 +2,6 @@
   <% if article.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
-
       <ul>
         <% article.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -10,6 +9,11 @@
       </ul>
     </div>
   <% end %>
+
+  <!--Task15-2で追加-->
+  <div class="mb-3">
+    <%= form.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
+  </div>
 
 <!--サイトではこのへんから〜-->
   <!--下記はbootstrap後に追記したコード-->

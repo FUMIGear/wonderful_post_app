@@ -10,7 +10,7 @@ class Article < ApplicationRecord
   # end
 
   # Task15で追加（タグと記事の関係）
-  has_many :tag, through: :article_tag #article_tag(中間)を通して、tagと紐付け
-	has_many :article_tag, dependent: :destroy #article_tagとの関係も記述する
+	has_many :article_tags, dependent: :destroy #article_tagとの関係も記述する
+  has_many :tags, through: :article_tags #article_tag(中間)を通して、tagと紐付け
 
 end

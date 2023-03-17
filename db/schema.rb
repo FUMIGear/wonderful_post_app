@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2023_02_26_075012) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -50,4 +50,6 @@ ActiveRecord::Schema.define(version: 2023_02_26_075012) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "article_tags", "articles"
+  add_foreign_key "article_tags", "tags"
 end

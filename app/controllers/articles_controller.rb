@@ -26,7 +26,7 @@ class ArticlesController < ApplicationController
     article = Article.all #articlesに全記事を代入する
     title = params[:title] #text_tagで取得したパラメータ
     # binding.pry
-    article = artcile.where("title LIKE ?", "%#{title}%") if title.present? #if修飾子（Tの場合は処理 if 条件式）
+    article = article.where("title LIKE ?", "%#{title}%") if title.present? #if修飾子（Tの場合は処理 if 条件式）
     @articles = article.all.page(params[:page]) #ページネイションで表示する。
     # Article：DBテーブル、.all：全部。つまり、Articleテーブルのデータを全て@articleに入れる。
     # @boards = Board.all.includes(:user).order(created_at: :desc).page(params[:page]) #参考サイトのコード
@@ -55,10 +55,11 @@ class ArticlesController < ApplicationController
     # @article = Article.new(article_params) #Task11-1まで
     # @article.user_id = current_user.id #自分で変更したコード
     @article = current_user.articles.new(article_params) # Task11-2で追加（模範）
-
+    # binding.pry
     # respond_to do |format| #これなに？→レスポンスをフォーマットごとに変えてる。（HTML形式とJSON形式）
-      if @article.save #記事が保存できるか
-        # 真の場合の処理
+    if @article.save #記事が保存できるか
+      # 真の場合の処理
+      # binding.pry
         redirect_to @article, notice: "#{t('activerecord.models.article')}を作成しました。" #Task11-2で模範回答に調整
         # format.html { redirect_to article_url(@article), notice: "記事の作成に成功しました！" }
         # format.json { render :show, status: :created, location: @article }
@@ -151,6 +152,6 @@ class ArticlesController < ApplicationController
     # Only allow a list of trusted parameters through.
     # このメソッド使ってるかわからない（笑）
     def article_params
-      params.require(:article).permit(:title, :content)
+      params.require(:article).permit(:title, :content, tag_ids:[])  #Task15-2で:tagを追加した
     end
 end

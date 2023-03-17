@@ -22,7 +22,16 @@
   <!-- binding.pry%>-->
     <% @articles.each do |article| %><!--@articlesの中にあるデータをeach文で表示する-->
       <tr>
-        <td><%= article.title %></td>
+        <!--Task15-2で追加した。下の行はコメントアウト-->
+        <!--<td><%= article.title %></td>--><!--Task15-2でコメントアウト-->
+        <td>
+          <%= article.title %>
+          <% article.tags.each do |tag| %>
+          <!-- binding.pry %>-->
+            <span class="badge rounded-pill bg-primary"><%= tag.name%></span>
+          <% end %>
+        </td>
+
         <td><!--.contentは記事(content)を表示するメソッド-->
           <%= article.content %>
         </td>

@@ -2,6 +2,9 @@
 <div class="card">
   <div class="card-header">
     <%= @article.title %>
+    <% @article.tags.each do |tag| %>
+      <span class="badge rounded-pill bg-primary"><%= tag.name%></span>
+    <% end %>
     <!--<strong>タイトル:</strong>-->
   </div>
 
@@ -11,7 +14,7 @@
   </div>
 </div>
     <!-- if  @article.user_id == current_user.id %>-->
-    <% if current_user&.id == @article.user_id %>
+    <% if current_user.id == @article.user_id %>
       <%= link_to '編集', edit_article_path(@article), class: "btn btn-warning"%> |
       <%= link_to '削除', @article, class: "btn btn-danger", method: :delete, data: { confirm: '本当にホントに消していいんか？' } %> |
     <% end %>
