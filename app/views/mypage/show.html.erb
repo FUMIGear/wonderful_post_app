@@ -16,7 +16,7 @@
     </tr>
   </thead>
   <tbody>
-   <% @articles.each do |user_article| %>
+   <% @articles.preload(:tags).each do |user_article| %>
    <!--current_user.articles.each do |user_article| %>-->
       <!--<td><%= user_article.title %></td>-->
       <td>

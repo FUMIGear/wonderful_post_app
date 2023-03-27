@@ -20,7 +20,8 @@
 
   <tbody>
   <!-- binding.pry%>-->
-    <% @articles.each do |article| %><!--@articlesの中にあるデータをeach文で表示する-->
+    <!--@articles.each do |article| %>@articlesの中にあるデータをeach文で表示する-->
+    <% @articles.preload(:tags).each do |article| %><!--TaskEx:N+1問題の対策-->
       <tr>
         <!--Task15-2で追加した。下の行はコメントアウト-->
         <!--<td><%= article.title %></td>--><!--Task15-2でコメントアウト-->

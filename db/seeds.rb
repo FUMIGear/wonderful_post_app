@@ -29,14 +29,8 @@
 # end
 
 # タグの設定（重複しないようになってる！）
-Tag.find_or_create_by(name:"楽しい")
-Tag.find_or_create_by(name:"お金")
-Tag.find_or_create_by(name:"つぶやき")
-Tag.find_or_create_by(name:"屋外")
-Tag.find_or_create_by(name:"旅行")
-Tag.find_or_create_by(name:"シックスパック")
-Tag.find_or_create_by(name:"お弁当")
-ti=0
+tags = %w(楽しい お金 つぶやき 屋外 旅行)
+tags.each { |tag| Tag.find_or_create_by!(name: tag) } #模範
 
 # 模範回答
 # アカウント数３つ
@@ -59,8 +53,11 @@ ti=0
     user.articles.find_or_create_by!(title: "No.#{ii}: user00#{i}の記事") do |article|
       # binding.pry
       article.content = "No.#{ii}: user00#{i}の記事の本文"
+      # binding.pry
+      # article.tag_ids = Tag.all.pluck(:id) #模範回答
+      article.tag_ids = Tag.pluck(:id) #これでもいけるんじゃない？
 
-      #Task15-2：seedファイルの編集
+      # Task15-2：seedファイルの編集
       # tag = article.tag_ids.push(t)
       # article.tag_ids=ii
       # article.tags.find(i) #→失敗
@@ -68,12 +65,12 @@ ti=0
     end
 
     # １つの記事に付くタグは４つ
-    ti += 1 #記事数をカウント
+    # ti += 1 #記事数をカウント
     # binding.pry
-    4.times do |t|
-      t +=1
+    # 4.times do |t|
+    #   t +=1
       #成功。このメソッドは複数のレコードも参照できる
-      ArticleTag.find_or_create_by(article_id:ti, tag_id:t)
+      # ArticleTag.find_or_create_by(article_id:ti, tag_id:t)
 
       # 最初に作ったやつ（seedを読み込むと重複する）
       # ArticleTag.create(
@@ -87,7 +84,7 @@ ti=0
       #   # binding.pry
       #   at.tag_id=t
       # end
-    end
+    # end
       # article.tag_ids = tag
   end
 end
