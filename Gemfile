@@ -26,11 +26,12 @@ gem 'sass-rails', '>= 6'
 # 変更する必要があったか不明・・・。
 # 元々あったのかな？
 # gem 'webpacker', '~> 4.0'
-# gem 'webpacker', '~> 5.0' # コメントアウトして、サイトの動作チェック。
+# gem 'webpacker', '~> 5.0' # コメントアウトする。TaskEx-2
 gem 'jsbundling-rails'
+gem 'cssbundling-rails'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+# gem 'turbolinks', '~> 5' #TaskEx2でコメントアウト
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production

@@ -1,0 +1,8 @@
+
+   package.json
+    // "webpack-dev-server": "^3"
+        "build": "webpack --config webpack.config.js",
+    // "start": "webpack serve"
+    webpack.config.jsのentry{
+        application: "./app/javascript/application.js",
+    }

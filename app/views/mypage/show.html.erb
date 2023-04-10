@@ -19,17 +19,18 @@
    <% @articles.preload(:tags).each do |user_article| %>
    <!--current_user.articles.each do |user_article| %>-->
       <!--<td><%= user_article.title %></td>-->
-      <td>
-        <%= user_article.title %>
-        <% user_article.tags.each do |tag| %>
-          <span class="badge rounded-pill bg-primary"><%= tag.name%></span>
-        <% end %>
-      </td>
-      <td><%= user_article.content %></td>
-      <td><%= link_to '表示', user_article, class: "btn btn-success" %>
-      <td><%= link_to '編集', edit_article_path(user_article), class: "btn btn-warning" %>
-      <td><%= link_to '削除', user_article, class: "btn btn-danger", method: :delete, data: { confirm: '本当にホントに消していいんか？' } %></td>
+      <tr>
+        <td>
+          <%= user_article.title %>
+          <% user_article.tags.each do |tag| %>
+            <span class="badge rounded-pill bg-primary"><%= tag.name%></span>
+          <% end %>
+        </td>
+        <td><%= user_article.content %></td>
+        <td><%= link_to '表示', user_article, class: "btn btn-success" %></td>
+        <td><%= link_to '編集', edit_article_path(user_article), class: "btn btn-warning" %></td>
+        <td><%= link_to '削除', user_article, class: "btn btn-danger", method: :delete, data: { confirm: '本当にホントに消していいんか？' } %></td>
       </tr>
     <% end %>
-    </tbody>
-  </table>
+  </tbody>
+</table>

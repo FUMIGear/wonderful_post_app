@@ -32,13 +32,10 @@
             <span class="badge rounded-pill bg-primary"><%= tag.name%></span>
           <% end %>
         </td>
-
-        <td><!--.contentは記事(content)を表示するメソッド-->
-          <%= article.content %>
-        </td>
-        <td>
-          <%= link_to '表示', article, class: "btn btn-success"%>
-        </td>
+        <!--.contentは記事(content)を表示するメソッド-->
+        <td><%= article.content %></td>
+        <td><%= link_to '表示', article, class: "btn btn-success"%>
+</td>
       </tr>
     <% end %>
   </tbody>

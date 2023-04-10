@@ -4,10 +4,14 @@
     <title>WonderfulPostApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <!--<%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %> #Qiitaで追加したコード-->
+    <!-- stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %> #Qiitaで追加したコード-->
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>TaskEx2作業前-->
+    <%=javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- javascript_include_tag 'application'%>-->
     <!--Task10で追加した-->
+    <!-- javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>-->
+
   </head>
 
   <body>
