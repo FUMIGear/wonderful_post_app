@@ -1,6 +1,7 @@
 services:
   - type: web
-    name: wonderful-editor
+    # name: wonderful-editor
+    name: wonderful-post-app
     env: ruby
     region: singapore
     plan: free
@@ -20,7 +21,8 @@ services:
     autoDeploy: false
 
 databases:
-  - name: postgresql-wonderful-editor
+  # - name: postgresql-wonderful-editor
+  - name: postgresql-wonderful-post-app
     region: singapore
     plan: free
     ipAllowList:
