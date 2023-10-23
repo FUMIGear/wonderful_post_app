@@ -12,5 +12,5 @@ class User < ApplicationRecord
   #模範回答
   # has_many :articles
 
-  # devise :database_authenticatable, :registerabPle, :confirmable, :recoverable, stretches: 13←これは？
+  # devise :database_authenticatable, :registerabPle, :confirmable, :recoverable, stretches: 13←これは？いらんかも
 end
