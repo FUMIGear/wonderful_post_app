@@ -18,6 +18,7 @@
     "lib": "lib"
   },
   "scripts": {
+    "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules",
     "build": "webpack --config webpack.config.js"
   },
   "keywords": [],
