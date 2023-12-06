@@ -92,3 +92,5 @@ production:
   database: wonderful_post_app_production
   # username: wonderful_post_app
   password: <%= ENV['WONDERFUL_POST_APP_DATABASE_PASSWORD'] %>
+  # secret_key_base: YOUR_SECRET_KEY_BASE
+  secret_key_base: bfb3232cb9c077b10ed72b56012b4f3e77a38630df27d8c440e156778f70541abe62f6ff0a205f60b8ee80cf14456a3842813911e45def035a1511c5e69471fc
