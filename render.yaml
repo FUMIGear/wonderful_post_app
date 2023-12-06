@@ -4,8 +4,8 @@ services:
     name: wonderful-post-app
     env: ruby
     region: singapore
-    plan: free
-    # plan: starter
+    # plan: free
+    plan: starter
     # branch: master
     branch: main
     numInstances: 1
@@ -26,8 +26,8 @@ databases:
   # - name: postgresql-wonderful-editor
   - name: postgresql-wonderful-post-app
     region: singapore
-    plan: free
-    # plan: starter #有料版にしたから
+    # plan: free
+    plan: starter #有料版にしたから
     ipAllowList:
       - source: 0.0.0.0/0
         description: everywhere # 学習用
